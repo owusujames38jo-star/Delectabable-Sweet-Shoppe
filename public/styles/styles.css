@@ -1,0 +1,757 @@
+/* =======================================================
+    1. CSS Reset and Global Styles
+    ======================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #4B3B2B;        /* Dark Brown - Headers, Text, High Contrast */
+    --secondary-color: #B28F67;      /* Medium Brown - Links, Accents */
+    --light-color: #F8F4F0;          /* Light Tan/Off-white - Backgrounds */
+    --text-color: #1f1f1f;           /* Deep Black/Text for maximum readability */
+    --white-color: #fff;             /* Pure White */
+    --accent-color: #ffb6c1;         /* Soft Pink - Call to Action, Navigation Bar */
+    --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle Shadow */
+    --shadow-medium: 0 8px 20px rgba(0, 0, 0, 0.2); /* Deeper Shadow for professional depth */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-size: 1.125rem; /* ~18px base font size */
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+    background-color: var(--white-color);
+    line-height: 1.7; 
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+ul {
+    list-style: none;
+}
+
+/* =======================================================
+    2. Header and Navigation
+    ======================================================= */
+header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.top-bar {
+    background: var(--white-color);
+    padding: 10px 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-subtle);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    height: 130px;
+    width: 170px;
+    margin-right: -2%;
+}
+
+.logo-text {
+    font-size: 2rem;
+    color: var(--primary-color);
+    font-style: italic;
+    white-space: nowrap;
+    
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.46);
+}
+
+.search-wrapper { 
+    width: 400px;
+    height: 50px;
+}
+
+.search {
+    display: flex; 
+    height: 100%; 
+    width: 100%; 
+    border: 2px solid var(--secondary-color);
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: var(--light-color);
+    align-items: center;
+}
+
+.search input {
+    flex: 1; 
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.search button {
+    padding: 10px 15px;
+    border: none;
+    background: var(--secondary-color);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 0;
+    flex-shrink: 0; 
+}
+
+.search button:hover {
+    background-color: var(--primary-color);
+}
+
+.search button .fa-solid {
+    color: var(--white-color);
+}
+
+.account {
+    display: flex;
+    gap: 20px;
+    font-size: 1.25rem; 
+    align-items: center;
+}
+
+.account a {
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 1.6rem; 
+    display: flex; 
+    align-items: center;
+}
+
+.account a:hover {
+    color: var(--accent-color);
+}
+
+.account .icon-link {
+    font-size: 1.5rem; 
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.account .icon-link:hover {
+    color: var(--accent-color);
+}
+
+
+nav {
+    background-color: var(--accent-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5%;
+}
+
+nav li {
+    padding: 12px 0;
+}
+
+nav a {
+    padding: 0 25px;
+    color: var(--primary-color);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+    font-style: oblique;
+}
+
+nav a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--white-color);
+}
+
+/* --- Sidebar Styles --- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 280px;
+    z-index: 9999;
+    background-color: var(--light-color);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 20px;
+    transform: translateX(100%); 
+    transition: transform 0.3s ease-out; 
+}
+
+.sidebar.show {
+    transform: translateX(0);
+}
+
+.sidebar a {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* =======================================================
+    3. Main Content Sections (Professional Hero Redesign)
+    ======================================================= */
+section {
+    padding: 100px 5%;
+    text-align: center;
+}
+
+h1 {
+    font-size: clamp(3rem, 7vw, 5rem);
+}
+
+h2 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 40px;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 4px;
+    background-color: var(--accent-color);
+    margin: 15px auto 0;
+    border-radius: 5px;
+}
+
+/* Universal CTA Button Style */
+.cta-button, .add-to-cart-btn {
+    display: inline-block;
+    padding: 16px 35px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover, .add-to-cart-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    transform: translateY(-3px); 
+    box-shadow: var(--shadow-medium);
+}
+
+/* --- Promotion Grid: Replaces .combined-hero-container --- */
+.hero-promo-grid {
+    background-color: var(--light-color); 
+    min-height: 600px; 
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 0 5% 50px; 
+    margin-top: 1px; 
+    
+    /* CORE LAYOUT: 3-column Grid for Desktop */
+    display: grid;
+    grid-template-columns: 250px 1fr 250px; 
+    gap: 20px; 
+    justify-content: center;
+    /* CRITICAL FIX: Ensures grid items (panels) stretch to fill the height of the row */
+    align-items: stretch; 
+    padding-top: 25px; 
+}
+
+/* --- Promotion Panel Styles (Left and Right of Carousel) --- */
+
+.promo-panel-left,
+.promo-panel-right {
+    /* CRITICAL FIX: Removed fixed height so it can stretch to fill the grid row */
+    height: auto; 
+    display: flex;
+    flex-direction: column;
+    /* Keeps content centered vertically within the now full-height panel */
+    justify-content: center; 
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-subtle);
+    background-color: var(--white-color); 
+    z-index: 5;
+}
+
+.promo-panel-left {
+    border-left: 5px solid var(--accent-color);
+}
+
+.promo-panel-right {
+    border-right: 5px solid var(--accent-color);
+}
+
+.promo-content h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.promo-content p {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 25px;
+}
+
+.promo-cta {
+    padding: 10px 20px; 
+    font-size: 0.9rem;
+}
+
+
+/* Background Image Layer */
+.hero-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/hero-background.jpg'); 
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.8) contrast(1.1); 
+    z-index: 1;
+}
+
+/* Central Content Container (Carousel + Text) */
+.hero-central-content {
+    position: relative;
+    width: 100%; 
+    /* Fixed height of 550px defines the height for the entire row, making the panels stretch to match it. */
+    height: 550px; 
+    z-index: 5; 
+    
+    display: flex;
+    flex-direction: column; 
+    
+    box-shadow: var(--shadow-medium); 
+    border-radius: 15px; 
+}
+
+
+/* --- CTA Text Container (Sits cleanly BELOW the carousel) --- */
+.hero-text-container {
+    position: relative;
+    
+    text-align: center;
+    width: 100%; 
+    padding: 20px; 
+    min-height: 100px;
+    z-index: 10; 
+    
+    background-color: rgba(31, 31, 31, 0.95); 
+    border-radius: 0 0 15px 15px;
+    border-top: 3px solid var(--accent-color); 
+}
+
+.hero-text-container h1 {
+    color: var(--white-color);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 5px; 
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+.hero-text-container p {
+    color: var(--light-color); 
+    font-size: 1.1rem;
+}
+
+/* --- Carousel Container (Fills the available space at the top) --- */
+.carousel-container-overlay {
+    position: relative;
+    width: 100%;
+    height: 450px; 
+    flex-grow: 1; 
+    z-index: 2; 
+    background-color: var(--white-color); 
+    border-radius: 15px 15px 0 0; 
+    overflow: hidden;
+}
+
+.carousel-slide {
+    display: flex;
+    width: 300%;
+    height: 100%; 
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide img {
+    width: calc(100% / 3); 
+    height: 100%;
+    
+    object-fit: contain; 
+    
+    background-color: var(--white-color); 
+    filter: brightness(0.9); 
+}
+
+/* Carousel Navigation Dots */
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    z-index: 3;
+    gap: 10px;
+}
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.dot.active {
+    background-color: var(--primary-color);
+}
+
+/* --- Products Section --- */
+.products-section {
+    padding-top: 100px; /* Adjusted spacing */
+    background-color: var(--light-color);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 40px; 
+    margin-top: 40px;
+}
+
+.product-card {
+    background-color: var(--white-color);
+    border-radius: 10px;
+    padding: 0;
+    box-shadow: var(--shadow-subtle);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-8px); 
+    box-shadow: var(--shadow-medium);
+}
+
+.product-image-container {
+    width: 100%;
+    height: 280px; 
+    overflow: hidden;
+    border-radius: 10px 10px 0 0; 
+}
+
+.product-card img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+}
+.product-card:hover img {
+    transform: scale(1.05); 
+}
+
+.product-info {
+    padding: 20px 25px;
+}
+.product-info h3 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+.product-info p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+
+/* =======================================================
+    4. Footer Styling 
+    ======================================================= */
+footer {
+    background-color: var(--primary-color); 
+    color: var(--light-color); 
+    padding: 50px 5% 30px; 
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2); 
+    margin-top: 80px; 
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 50px; 
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 280px; 
+    font-size: 1rem; 
+}
+
+footer h3 {
+    color: var(--accent-color); 
+    font-size: 1.5rem; 
+    margin-bottom: 25px;
+    letter-spacing: 1.5px;
+}
+
+.footer-section p {
+    margin-bottom: 15px;
+    color: var(--light-color);
+}
+
+.footer-section p i {
+    margin-right: 12px;
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+}
+
+.footer-links a {
+    color: var(--light-color);
+    font-weight: 400;
+}
+.footer-links a:hover {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.social-icons a {
+    color: var(--light-color);
+    font-size: 2rem; 
+    margin-right: 20px;
+}
+
+.social-icons a:hover {
+    color: var(--secondary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 1rem;
+    color: var(--light-color);
+}
+
+/* --- Media Queries for Responsive Design (Mobile Fixes) --- */
+@media (max-width: 800px) {
+    /* 🛠️ CRITICAL FIX 1: Prevent all horizontal overflow from the body */
+    body {
+        overflow-x: hidden; 
+    }
+    
+    /* 🛠️ CRITICAL FIX 2: Restructure the top-bar for mobile */
+    .top-bar {
+        justify-content: space-between; 
+        flex-wrap: wrap; /* Allows search bar to drop below */
+        padding: 10px 4%; /* Slightly tighter horizontal padding */
+    }
+
+    /* 🛠️ CRITICAL FIX 3: Constrain the Logo and its long text */
+    .logo {
+        flex: 1 0 auto; 
+        justify-content: flex-start; 
+        max-width: 65%; /* Limits the logo area to 2/3rds of the top row */
+        flex-wrap: nowrap; 
+    }
+    
+    .logo img {
+        height: 60px; /* Reduced size */
+        margin-right: 5px;
+        flex-shrink: 0;
+    }
+    
+    .logo-text {
+        font-size: 1.1rem; /* Smaller font for long titles */
+        margin-bottom: 0;
+        white-space: normal; /* 💥 Allows the title to wrap to the next line! */
+        line-height: 1.1; 
+    }
+    
+    /* 🛠️ CRITICAL FIX 4: Manage Account Icons and Menu Button */
+    .account {
+        flex: 1 0 auto; 
+        justify-content: flex-end; /* Pushes content to the right edge */
+        gap: 10px; 
+        max-width: 35%; /* Limits the account area width */
+        overflow: visible !important; 
+        display: flex !important; /* NEW: Ensure the account container uses flex for internal alignment */
+    }
+    
+    /* Hide the full "Account" text link on mobile, keeping only the icon */
+    .account a:not(.icon-link):not(.menu-button) { 
+        display: none !important;
+    }
+    
+    /* 🟢 FINAL CRITICAL FIX FOR THE MENU BUTTON 🟢 */
+    /* Aggressively ensure the button container is displayed (but the inline HTML fix is the strongest) */
+    .menu-button {
+        /* Force display, overriding any inherited or desktop 'display: none' */
+        display: flex !important; 
+        color: var(--primary-color) !important; /* Ensures it has a visible color */
+        background: none !important;
+        border: none !important;
+        cursor: pointer;
+        padding: 5px;
+        flex-shrink: 0; 
+        order: 2; 
+        margin-left: 10px;
+        z-index: 10001; 
+        align-items: center; 
+        justify-content: center;
+    }
+
+    /* 🟢 Target the SVG icon inside the button specifically */
+    .menu-button svg {
+        width: 32px !important; 
+        height: 32px !important;
+        fill: currentColor !important; 
+        display: block !important; /* Ensure the SVG itself isn't hidden by accident */
+    }
+    
+    /* 🛠️ CRITICAL FIX 5: Ensure Search Bar takes full width on its own row */
+    .search-wrapper { 
+        order: 3; /* Forces it to the second line */
+        width: 100%;
+        max-width: 100%;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        flex: 1 0 100%; /* Forces it to take full width */
+        padding: 0 4%; /* Match top-bar padding for edge alignment */
+        height: auto;
+        display: block;
+    }
+    
+    /* Ensure the search form inside the wrapper takes full width */
+    .search { 
+        width: 100%;
+    }
+    
+    /* Hide the desktop menu links */
+    .hideOnMobile {
+        display: none !important;
+    }
+
+    section {
+        padding: 50px 4%; /* Reduced padding for mobile content */
+    }
+    
+    .hero-promo-grid {
+        display: block; 
+        min-height: 500px; 
+        padding: 0;
+        padding-top: 0; 
+        padding-bottom: 20px; 
+    }
+    
+    .promo-panel-left,
+    .promo-panel-right {
+        display: none; 
+    }
+    
+    .hero-central-content {
+        width: 100%;
+        max-width: 100%;
+        margin: auto;
+        max-height: 500px;
+        height: auto; 
+    }
+    
+    .hero-text-container {
+        border-top: none;
+        border-radius: 12px;
+        max-width: 95%;
+        margin: 0 auto; 
+        min-height: 100px;
+        padding: 15px;
+    }
+    
+    .carousel-container-overlay {
+        display: none; 
+    }
+    
+    .product-grid {
+        grid-template-columns: 1fr; /* Stack products vertically on mobile */
+    }
+    
+    .footer-content {
+        justify-content: center;
+        text-align: center;
+    }
+    .footer-section {
+        min-width: 100%;
+    }
+}
+
+/* =======================================================
+    5. PWA Enhancements (For App Mode) 🚀
+    ======================================================= */
+
+/* This CSS ONLY applies when the site is 'installed' and run as a standalone app */
+@media all and (display-mode: standalone) {
+    
+    /* Streamline the header for the app feel by reducing its height slightly */
+    .top-bar {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    
+    .logo img {
+        height: 100px; /* Reduce logo size slightly for a cleaner app header */
+    }
+    
+    .logo-text {
+        font-size: 1.6rem; /* Adjust font size to fit better in the app header */
+        margin-bottom: 0;
+    }
+}
