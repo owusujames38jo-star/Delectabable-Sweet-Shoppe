@@ -14,7 +14,7 @@ const urlsToCache = [
     '/contact.html',
     
     // Core Assets
-    '/styles.css', // 🎯 FIXED: Corrected path for styles.css from original log error
+    '/styles/styles.css', // 🎯 FIXED: Corrected path for styles.css from original log error
     '/manifest.json',
     
     // Scripts
