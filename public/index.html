@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Divine Delights Bakery | Gourmet Pastries & Breads</title>
     
-    <link rel="icon" type="image/png" href="./images/icons/icon-192.png">
+    <link rel="icon" type="image/png" href="/images/icons/icon-192.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,9 +13,9 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
-    <link rel="stylesheet" href="./styles/styles.css"> 
+    <link rel="stylesheet" href="/styles.css"> 
 
-    <link rel="manifest" href="./manifest.json">
+    <link rel="manifest" href="/manifest.json">
 
     </head>
 <body>
@@ -52,9 +52,9 @@
                 
                 <div class="carousel-container-overlay">
                     <div class="carousel-slide" id="carouselSlide">
-                        <img src="./images/carousel-cake-1.jpg" alt="Freshly baked artisan sourdough bread">
-                        <img src="./images/carousel-cake-2.jpg" alt="Golden flaky croissants on a cooling rack">
-                        <img src="./images/carousel-cake-3.jpg" alt="Elegant chocolate layer cake with frosting">
+                        <img src="/images/carousel-cake-1.jpg" alt="Freshly baked artisan sourdough bread">
+                        <img src="/images/carousel-cake-2.jpg" alt="Golden flaky croissants on a cooling rack">
+                        <img src="/images/carousel-cake-3.jpg" alt="Elegant chocolate layer cake with frosting">
                     </div>
                     
                     <div class="carousel-nav" id="carouselNav">
@@ -91,10 +91,10 @@
                     data-product-id="croissant1"
                     data-product-name="Classic Croissant"
                     data-product-price="3.99"
-                    data-product-image="./images/product-1.jpg"> 
+                    data-product-image="/images/product-1.jpg"> 
 
                     <div class="product-image-container">
-                        <img src="./images/product-1.jpg" alt="Classic French Croissant">
+                        <img src="/images/product-1.jpg" alt="Classic French Croissant">
                     </div>
                     <div class="product-info">
                         <h3>Classic Croissant</h3>
@@ -108,9 +108,9 @@
                     data-product-id="sourdough2"
                     data-product-name="Rustic Sourdough"
                     data-product-price="7.50"
-                    data-product-image="./images/product-2.jpg">
+                    data-product-image="/images/product-2.jpg">
                     <div class="product-image-container">
-                        <img src="./images/product-2.jpg" alt="Rustic Sourdough Loaf">
+                        <img src="/images/product-2.jpg" alt="Rustic Sourdough Loaf">
                     </div>
                     <div class="product-info">
                         <h3>Rustic Sourdough</h3>
@@ -124,9 +124,9 @@
                     data-product-id="brownie3"
                     data-product-name="Fudgy Brownies"
                     data-product-price="4.50"
-                    data-product-image="./images/product-3.jpg">
+                    data-product-image="/images/product-3.jpg">
                     <div class="product-image-container">
-                        <img src="./images/product-3.jpg" alt="Rich Chocolate Brownies">
+                        <img src="/images/product-3.jpg" alt="Rich Chocolate Brownies">
                     </div>
                     <div class="product-info">
                         <h3>Fudgy Brownies</h3>
@@ -147,8 +147,8 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                // 🟢 FIX: Service worker is now registered from the scope root (/public/)
-                navigator.serviceWorker.register('./sw.js').then(function(registration) {
+                // 🟢 FIXED: Service worker registration uses absolute root path
+                navigator.serviceWorker.register('/sw.js').then(function(registration) {
                     console.log('ServiceWorker registration successful with scope: ', registration.scope);
                 }, function(err) {
                     console.log('ServiceWorker registration failed: ', err);
@@ -157,11 +157,9 @@
         }
     </script>
     
-    <script type="module" src="./scripts/cart.js"></script>
-    
-    <script type="module" src="./scripts/components.js"></script> 
-    
-    <script type="module" src="./scripts/main.js"></script>
+    <script type="module" src="/scripts/cart.js"></script>
+    <script type="module" src="/scripts/components.js"></script> 
+    <script type="module" src="/scripts/main.js"></script>
 
 </body>
 </html>

@@ -341,13 +341,13 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
 
     // 🌟 PWA FIX: Service Worker Registration 🌟
-    // The path is changed to '/service-worker.js' to ensure the browser 
+    // The path is changed to '/sw.js' to ensure the browser 
     // looks in the site's root directory, fixing the 404 error if the script 
     // is in the root.
     if ('serviceWorker' in navigator) {
-        // FIX: Use root-relative path '/'
-        navigator.serviceWorker.register('/public/sw.js', {
-            scope: '/public/'
+        // 🟢 FIX: Use absolute root paths '/' for both script and scope.
+        navigator.serviceWorker.register('/sw.js', {
+            scope: '/' // The scope is now the root of the site.
         })
             .then(reg => console.log('Service Worker registered successfully. Scope:', reg.scope))
             .catch(err => console.error('Service Worker registration failed:', err));
@@ -359,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
     productCards.forEach(card => {
         const button = card.querySelector('.add-to-cart-btn');
         if (button) {
-            button.addEventListener('click', (e) => {
+            button.addEventListener('click', (e) => { // Using 'e' to access event object
                 e.preventDefault(); 
                 
                 const product = {
@@ -395,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add listener for the main "Proceed to Payment" button on the checkout page
         const checkoutButton = document.getElementById('checkout-btn');
         if (checkoutButton) {
-            checkoutButton.addEventListener('click', (e) => { // Use 'e' to access event object if needed
+            checkoutButton.addEventListener('click', (e) => { // Use 'e' to access event object
                 e.preventDefault(); // Prevents default button behavior if it was type="submit"
                 const cart = getCart();
 
