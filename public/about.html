@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Divine Delights Bakery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://example.com/your-cart-service.css" /> 
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+    <header>
+        <div class="top-bar">
+            </div>
+
+        <nav>
+            <ul class="hideOnMobile">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="breads.html">Breads</a></li>
+                <li><a href="pastries.html">Pastries</a></li>
+                <li><a href="cakes.html">Cakes</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="sidebar">
+        <a href="#" onclick="hideSidebar()"><i class="fa-solid fa-xmark"></i></a>
+        <a href="index.html">Home</a>
+        <a href="breads.html">Breads</a>
+        <a href="pastries.html">Pastries</a>
+        <a href="cakes.html">Cakes</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <main>
+        <section class="about-us-content" style="text-align: left; max-width: 900px; margin: auto;">
+            
+            <h2>Our Story: Baked with Passion</h2>
+            
+            <img src="/images/baker-at-work.jpg" alt="Baker preparing dough" style="width: 100%; height: auto; border-radius: 10px; margin-bottom: 30px;">
+            
+            <p><strong>Divine Delights</strong> was founded in 2018 by Master Baker Sheree Thomas, who turned a lifelong passion for fermentation and flaky pastry into a thriving neighborhood business. We believe that the best food is made by hand, with simple, quality ingredients, and a generous amount of time.</p>
+
+            <h3 style="margin-top: 40px;">Our Commitment to Quality</h3>
+            <p>Our philosophy is simple: **Source the best, bake the best.** We use locally milled organic flour, European-style butter, and natural yeast cultures. We never rush our process. Our sourdough is fermented for 24 hours, and our croissants proof overnight to achieve that perfect, airy honeycomb interior.</p>
+
+            <h3 style="margin-top: 40px;">Meet the Team</h3>
+            <div class="team-profiles" style="display: flex; gap: 30px; margin-top: 20px;">
+                <div style="flex: 1; text-align: center;">
+                    <img src="/images/sarah.jpg" alt="Sheree Thomas, Master Baker" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+                    <h4 style="margin-top: 10px;">Sheree Thomas</h4>
+                    <p style="font-size: 0.9rem; color: var(--secondary-color);">Founder & Master Baker</p>
+                </div>
+                </div>
+            
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="contact.html" class="cta-button">Join Our Journey</a>
+            </div>
+            
+        </section>
+    </main>
+
+    <footer>
+        </footer>
+
+    <script async src="https://example.com/your-cart-service.js"></script>
+    <div hidden id="your-cart-service-container" data-api-key="YOUR_PUBLIC_API_KEY"></div>
+    <script>
+        // Sidebar Toggle Functions only
+        const sidebar = document.querySelector('.sidebar');
+        function showSidebar() {
+            sidebar.classList.add('show');
+            document.body.style.overflow = 'hidden'; 
+        }
+        function hideSidebar() {
+            sidebar.classList.remove('show');
+            document.body.style.overflow = ''; 
+        }
+    </script>
+</body>
+</html>

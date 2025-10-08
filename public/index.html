@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divine Delights Bakery | Gourmet Pastries & Breads</title>
+    
+    <link rel="icon" type="image/png" href="./images/icons/icon-192x192.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="./styles/styles.css"> 
+
+    <link rel="manifest" href="./manifest.json">
+
+    </head>
+<body>
+    <noscript>
+        <div style="text-align: center; padding: 20px; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;">
+            <h1>JavaScript Required</h1>
+            <p>Our website, including the shopping cart and navigation, requires JavaScript to function. Please enable JavaScript in your browser settings to view Divine Delights Bakery.</p>
+        </div>
+    </noscript>
+    
+    <div id="header-placeholder"></div>
+
+    <main>
+        </main>
+
+    <div id="footer-placeholder"></div>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        
+        <section class="hero-promo-grid">
+            <div class="hero-background-image"></div>
+            
+            <div class="promo-panel-left">
+                <div class="promo-content">
+                    <h3>Seasonal Specials!</h3>
+                    <p>10% Off All Pumpkin Spice Pastries.</p>
+                    <a href="pastries.html" class="cta-button promo-cta">Shop Now</a>
+                </div>
+            </div>
+
+            <div class="hero-central-content">
+                
+                <div class="carousel-container-overlay">
+                    <div class="carousel-slide" id="carouselSlide">
+                        <img src="./images/carousel-cake-1.jpg" alt="Freshly baked artisan sourdough bread">
+                        <img src="./images/carousel-cake-2.jpg" alt="Golden flaky croissants on a cooling rack">
+                        <img src="./images/carousel-cake-3.jpg" alt="Elegant chocolate layer cake with frosting">
+                    </div>
+                    
+                    <div class="carousel-nav" id="carouselNav">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                
+                <div class="hero-text-container">
+                    <h1>Delectable Sweets</h1>
+                    <p>The freshest gourmet pastries, baked with passion everyday.</p>
+                    <a href="#products" class="cta-button">Shop Our Signature Bestsellers</a>
+                </div>
+                
+            </div>
+
+            <div class="promo-panel-right">
+                <div class="promo-content">
+                    <h3>First Order Discount</h3>
+                    <p>Sign up for our newsletter and get 15% off your first online order!</p>
+                    <a href="contact.html" class="cta-button promo-cta">Sign Up</a>
+                </div>
+            </div>
+            
+        </section>
+
+        <section id="products" class="products-section">
+            <h2>Our Signature Bestsellers</h2>
+            
+            <div class="product-grid" id="product-list">
+                
+                <div class="product-card"
+                    data-product-id="croissant1"
+                    data-product-name="Classic Croissant"
+                    data-product-price="3.99"
+                    data-product-image="./images/product-1.jpg"> 
+
+                    <div class="product-image-container">
+                        <img src="./images/product-1.jpg" alt="Classic French Croissant">
+                    </div>
+                    <div class="product-info">
+                        <h3>Classic Croissant</h3>
+                        <p>Flaky layers, golden butter perfection. The perfect start to any morning.</p>
+                        <span>$3.99</span>
+                        <a href="#" class="add-to-cart-btn" role="button">Add to Cart</a>
+                    </div>
+                </div>
+                
+                <div class="product-card"
+                    data-product-id="sourdough2"
+                    data-product-name="Rustic Sourdough"
+                    data-product-price="7.50"
+                    data-product-image="./images/product-2.jpg">
+                    <div class="product-image-container">
+                        <img src="./images/product-2.jpg" alt="Rustic Sourdough Loaf">
+                    </div>
+                    <div class="product-info">
+                        <h3>Rustic Sourdough</h3>
+                        <p>Naturally leavened with a perfect crust and tangy, chewy interior.</p>
+                        <span>$7.50</span>
+                        <a href="#" class="add-to-cart-btn" role="button">Add to Cart</a>
+                    </div>
+                </div>
+
+                <div class="product-card"
+                    data-product-id="brownie3"
+                    data-product-name="Fudgy Brownies"
+                    data-product-price="4.50"
+                    data-product-image="./images/product-3.jpg">
+                    <div class="product-image-container">
+                        <img src="./images/product-3.jpg" alt="Rich Chocolate Brownies">
+                    </div>
+                    <div class="product-info">
+                        <h3>Fudgy Brownies</h3>
+                        <p>Dense, decadent, and intensely chocolatey with a perfect crackled top.</p>
+                        <span>$4.50</span>
+                        <a href="#" class="add-to-cart-btn" role="button">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="popular.html" class="cta-button" style="margin-top: 50px;">View All Products</a>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                // 🟢 FIX: Service worker is now registered from the scope root (/public/)
+                navigator.serviceWorker.register('./sw.js').then(function(registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+    
+    <script type="module" src="./scripts/cart.js"></script>
+    
+    <script type="module" src="./scripts/components.js"></script> 
+    
+    <script type="module" src="./scripts/main.js"></script>
+
+</body>
+</html>

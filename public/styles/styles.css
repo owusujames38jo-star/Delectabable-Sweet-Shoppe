@@ -1,0 +1,1204 @@
+/* =======================================================
+    1. CSS Reset and Global Styles
+    ======================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette: Bakery-themed warm tones */
+    --color-dark-text: #4B3B2B;        /* Dark Brown - Headers, High Contrast */
+    --color-brown: #B28F67;             /* Medium Brown/Tan - Links, Primary CTA */
+    --light-color: #F8F4F0;             /* Light Tan/Off-white - Backgrounds */
+    --primary-color: #1f1f1f;           /* Deep Black/Text for maximum readability */
+    --white-color: #fff;              /* Pure White */
+    --color-light-pink: #ffb6c1;       /* Soft Pink - Call to Action, Navigation Bar */
+    --color-danger: #A42B30;           /* Red/Maroon for remove/alert actions */
+    --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.1); 
+    --shadow-medium: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    color: var(--primary-color); 
+    background-color: var(--white-color);
+    line-height: 1.7; 
+    min-height: 100vh;
+    font-size: 1.125rem; /* ~18px base font size */
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden; /* Prevent horizontal scroll on all screens */
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--color-dark-text);
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-brown);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-light-pink);
+}
+
+ul {
+    list-style: none;
+}
+
+/* =======================================================
+    2. Header and Navigation
+    ======================================================= */
+header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.top-bar {
+    background: var(--white-color);
+    padding: 10px 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-subtle);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    height: 130px;
+    width: 170px;
+    margin-right: -2%;
+}
+
+.logo-text {
+    font-size: 2rem;
+    color: var(--color-dark-text);
+    font-style: italic;
+    white-space: nowrap;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.46);
+}
+
+.search-wrapper { 
+    width: 400px;
+    height: 50px;
+}
+
+.search {
+    display: flex; 
+    height: 100%; 
+    width: 100%; 
+    border: 2px solid var(--color-brown); 
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: var(--light-color);
+    align-items: center;
+}
+
+.search input {
+    flex: 1; 
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.search button {
+    padding: 10px 15px;
+    border: none;
+    background: var(--color-brown); 
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 0;
+    flex-shrink: 0; 
+}
+
+.search button:hover {
+    background-color: var(--color-dark-text);
+}
+
+.search button .fa-solid {
+    color: var(--white-color);
+}
+
+.account {
+    display: flex;
+    gap: 20px;
+    font-size: 1.25rem; 
+    align-items: center;
+}
+
+.account a {
+    color: var(--color-dark-text);
+    font-weight: 500;
+    font-size: 1.6rem; 
+    display: flex; 
+    align-items: center;
+}
+
+.account a:hover {
+    color: var(--color-light-pink);
+}
+
+.account .icon-link {
+    font-size: 1.5rem; 
+    color: var(--color-dark-text);
+    transition: color 0.3s ease;
+}
+
+.account .icon-link:hover {
+    color: var(--color-light-pink);
+}
+
+/* --- Cart Count Badge Style --- */
+.cart-count {
+    display: none; /* Initially hidden, JS shows it when items are added */
+    position: absolute;
+    top: -5px; 
+    right: -10px;
+    background-color: var(--color-danger); /* Use danger color for attention */
+    color: var(--white-color);
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    min-width: 20px;
+    z-index: 10;
+}
+
+/* Ensure the cart icon link is positioned correctly for the badge */
+.account .icon-link[aria-label="Shopping Cart"] {
+    position: relative; 
+}
+
+/* 🟢 Mobile Menu Button Style 🟢 */
+/* Hide the button by default on desktop, show it in media query */
+.menu-button {
+    display: none; /* CRITICAL: Hidden on desktop */
+    color: var(--color-dark-text);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 10001; 
+}
+
+nav {
+    background-color: var(--color-light-pink);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5%;
+}
+
+nav li {
+    padding: 12px 0;
+}
+
+nav a {
+    padding: 0 25px;
+    color: var(--color-dark-text);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+    font-style: oblique;
+}
+
+nav a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--white-color);
+}
+
+/* --- Sidebar Styles --- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 280px;
+    z-index: 9999;
+    background-color: var(--light-color);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 20px;
+    transform: translateX(100%); 
+    transition: transform 0.3s ease-out; 
+    /* display: none; /* Removed: JS handles display/transform */
+}
+
+.sidebar.show {
+    transform: translateX(0);
+}
+
+.sidebar a {
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 15px 30px;
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.sidebar a:first-child {
+    align-self: flex-end;
+    font-size: 2rem;
+    padding: 10px 20px;
+    border-bottom: none;
+}
+
+
+/* =======================================================
+    3. Main Content Sections (Professional Hero Redesign)
+    ======================================================= */
+section {
+    padding: 100px 5%;
+    text-align: center;
+}
+
+h1 {
+    font-size: clamp(3rem, 7vw, 5rem);
+}
+
+h2 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 40px;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 4px;
+    background-color: var(--color-light-pink); 
+    margin: 15px auto 0;
+    border-radius: 5px;
+}
+
+/* Universal CTA Button Style */
+.cta-button, .add-to-cart-btn {
+    display: inline-block;
+    padding: 16px 35px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color: var(--color-brown); 
+    color: var(--white-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover, .add-to-cart-btn:hover {
+    background-color: var(--color-dark-text); 
+    color: var(--white-color);
+    transform: translateY(-3px); 
+    box-shadow: var(--shadow-medium);
+}
+
+/* 🟢 NEW: Secondary and Danger CTA Styles (for Checkout) 🟢 */
+.secondary-cta {
+    background-color: transparent;
+    color: var(--color-dark-text);
+    border: 2px solid var(--color-dark-text);
+    padding: 14px 33px; /* Adjust padding to match height of primary CTA */
+}
+.secondary-cta:hover {
+    background-color: var(--light-color);
+    border-color: var(--color-brown);
+    color: var(--color-brown);
+}
+
+.danger-cta {
+    background-color: var(--color-danger);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.danger-cta:hover {
+    background-color: #7b2226; /* Darker red */
+    transform: translateY(-3px); 
+}
+.full-width {
+    width: 100%;
+    display: block;
+}
+
+/* Disabled button state */
+.cta-button:disabled, .cta-button[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+
+/* --- Promotion Grid: Hero --- */
+.hero-promo-grid {
+    background-color: var(--light-color); 
+    min-height: 600px; 
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 0 5% 50px; 
+    margin-top: 1px; 
+    
+    display: grid;
+    grid-template-columns: 250px 1fr 250px; 
+    gap: 20px; 
+    justify-content: center;
+    align-items: stretch; 
+    padding-top: 25px; 
+}
+
+/* --- Promotion Panel Styles (Left and Right of Carousel) --- */
+
+.promo-panel-left,
+.promo-panel-right {
+    height: auto; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-subtle);
+    background-color: var(--white-color); 
+    z-index: 5;
+}
+
+.promo-panel-left {
+    border-left: 5px solid var(--color-light-pink);
+}
+
+.promo-panel-right {
+    border-right: 5px solid var(--color-light-pink);
+}
+
+.promo-content h3 {
+    font-size: 1.8rem;
+    color: var(--color-dark-text);
+    margin-bottom: 10px;
+}
+
+.promo-content p {
+    font-size: 1rem;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+}
+
+.promo-cta {
+    padding: 10px 20px; 
+    font-size: 0.9rem;
+}
+
+
+/* Background Image Layer */
+.hero-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Update path if image is missing, assuming it should be a general bakery scene */
+    background-image: url('../images/hero-background.jpg'); 
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.8) contrast(1.1); 
+    z-index: 1;
+}
+
+/* Central Content Container (Carousel + Text) */
+.hero-central-content {
+    position: relative;
+    width: 100%; 
+    height: 550px; 
+    z-index: 5; 
+    
+    display: flex;
+    flex-direction: column; 
+    
+    box-shadow: var(--shadow-medium); 
+    border-radius: 15px; 
+}
+
+
+/* --- CTA Text Container (Sits cleanly BELOW the carousel) --- */
+.hero-text-container {
+    position: relative;
+    
+    text-align: center;
+    width: 100%; 
+    padding: 20px; 
+    min-height: 100px;
+    z-index: 10; 
+    
+    background-color: rgba(31, 31, 31, 0.95); 
+    border-radius: 0 0 15px 15px;
+    border-top: 3px solid var(--color-light-pink); 
+}
+
+.hero-text-container h1 {
+    color: var(--white-color);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 5px; 
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+.hero-text-container p {
+    color: var(--light-color); 
+    font-size: 1.1rem;
+}
+
+/* --- Carousel Container (Fills the available space at the top) --- */
+.carousel-container-overlay {
+    position: relative;
+    width: 100%;
+    height: 450px; 
+    flex-grow: 1; 
+    z-index: 2; 
+    background-color: var(--white-color); 
+    border-radius: 15px 15px 0 0; 
+    overflow: hidden;
+}
+
+.carousel-slide {
+    display: flex;
+    width: 300%;
+    height: 100%; 
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide img {
+    width: calc(100% / 3); 
+    height: 100%;
+    
+    object-fit: cover; /* Changed from 'contain' to 'cover' for a better hero look */
+    
+    background-color: var(--white-color); 
+    filter: brightness(0.9); 
+}
+
+/* Carousel Navigation Dots */
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    z-index: 3;
+    gap: 10px;
+}
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--color-dark-text);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.dot.active {
+    background-color: var(--color-dark-text);
+}
+
+/* --- Products Section --- */
+.products-section {
+    padding-top: 100px; 
+    background-color: var(--light-color);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 40px; 
+    margin-top: 40px;
+}
+
+.product-card {
+    background-color: var(--white-color);
+    border-radius: 10px;
+    padding: 0;
+    box-shadow: var(--shadow-subtle);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-8px); 
+    box-shadow: var(--shadow-medium);
+}
+
+.product-image-container {
+    width: 100%;
+    height: 280px; 
+    overflow: hidden;
+    border-radius: 10px 10px 0 0; 
+}
+
+.product-card img {
+    object-fit: cover; /* Changed to 'cover' for a more unified look */
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+}
+.product-card:hover img {
+    transform: scale(1.05); 
+}
+
+.product-info {
+    padding: 20px 25px;
+}
+.product-info h3 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+.product-info p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+.product-info span {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-danger);
+    margin-bottom: 20px;
+}
+
+
+/* =======================================================
+    4. Footer Styling 
+    ======================================================= */
+footer {
+    background-color: var(--color-dark-text); 
+    color: var(--light-color); 
+    padding: 50px 5% 30px; 
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2); 
+    margin-top: 80px; 
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 50px; 
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 280px; 
+    font-size: 1rem; 
+}
+
+footer h3 {
+    color: var(--color-light-pink); 
+    font-size: 1.5rem; 
+    margin-bottom: 25px;
+    letter-spacing: 1.5px;
+}
+
+.footer-section p {
+    margin-bottom: 15px;
+    color: var(--light-color);
+}
+
+.footer-section p i {
+    margin-right: 12px;
+    color: var(--color-brown);
+    font-size: 1.2rem;
+}
+
+.footer-links a {
+    color: var(--light-color);
+    font-weight: 400;
+    display: block;
+    margin-bottom: 8px;
+}
+.footer-links a:hover {
+    color: var(--color-brown);
+    text-decoration: none;
+}
+
+.social-icons a {
+    color: var(--light-color);
+    font-size: 2rem; 
+    margin-right: 20px;
+}
+
+.social-icons a:hover {
+    color: var(--color-brown);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 1rem;
+    color: var(--light-color);
+}
+
+/* =======================================================
+    5. Checkout Page Styles (FIXED & EXPANDED)
+    ======================================================= */
+.checkout-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 5%; 
+}
+
+/* 🟢 New Form Styles 🟢 */
+.checkout-form fieldset {
+    border: 2px solid var(--light-color);
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    background-color: var(--white-color);
+}
+
+.checkout-form legend {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-dark-text);
+    padding: 0 10px;
+    margin-left: -10px; /* Pulls legend slightly to the left over the border */
+}
+
+.checkout-form .form-group {
+    margin-bottom: 20px;
+}
+
+.checkout-form label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.checkout-form input[type="text"],
+.checkout-form input[type="email"],
+.checkout-form input[type="tel"], /* Added tel for phone/card number */
+.checkout-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    background-color: var(--light-color);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.checkout-form input:focus,
+.checkout-form select:focus {
+    border-color: var(--color-brown);
+    outline: none;
+    box-shadow: 0 0 5px rgba(178, 143, 103, 0.5); /* Soft shadow on focus */
+}
+
+/* 🛑 NEW: Validation Error Styling 🛑 */
+.checkout-form input.error,
+.checkout-form select.error {
+    border-color: var(--color-danger); /* Red border for error */
+    box-shadow: 0 0 0 2px rgba(164, 43, 48, 0.5); /* Red shadow for emphasis */
+}
+
+.checkout-form input:invalid:not(:focus),
+.checkout-form select:invalid:not(:focus) {
+    /* Add the styles you want to apply here */
+    border-color: #e74c3c; /* Example: make the border red */
+    box-shadow: 0 0 0 1px #e74c3c; /* Example: subtle red glow */
+}
+
+/* 🛑 End Validation Error Styling 🛑 */
+
+.checkout-form .form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.checkout-form .form-row .form-group {
+    flex: 1;
+}
+/* 🟢 End New Form Styles 🟢 */
+
+
+.checkout-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr; 
+    gap: 50px; /* Increased gap for better separation */
+    margin-top: 50px;
+    align-items: flex-start; /* Align sections to the top */
+}
+
+/* --- Cart Items Section --- */
+/* This section needs to be renamed in the HTML to match the JS/Summary panel */
+/* Removed redundant .cart-details as the content is spread across the form/summary */
+
+.checkout-form h2 {
+    text-align: left;
+    margin-bottom: 30px;
+}
+.checkout-form h2::after {
+    margin: 15px 0 0 0; /* Align hr left */
+}
+
+
+.cart-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-brown); /* Changed from light-color for visibility */
+    gap: 15px;
+}
+.cart-actions .cta-button {
+    flex-grow: 1; /* Allow both buttons to take up space */
+    text-align: center;
+}
+
+.empty-cart-message {
+    text-align: center;
+    padding: 50px;
+    background-color: var(--white-color); /* Lighter background for empty state */
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 2px dashed var(--color-brown);
+}
+.empty-cart-message i {
+    font-size: 3rem;
+    color: var(--color-brown);
+    margin-bottom: 10px;
+    display: block;
+}
+
+
+/* --- Individual Cart Item Styles (Generated by JS) --- */
+.cart-item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto; /* Image | Details | Total Price */
+    gap: 20px;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Subtle divider */
+}
+
+.cart-item:last-of-type {
+    border-bottom: none;
+}
+
+.cart-item-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #eee;
+}
+
+.cart-item-details {
+    text-align: left;
+}
+.cart-item-details .item-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.cart-item-details .item-price {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 5px 0;
+}
+
+.item-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1rem;
+}
+.item-quantity-input {
+    width: 60px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    color: var(--color-danger);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+.remove-btn:hover {
+    color: var(--color-dark-text);
+}
+.remove-btn i {
+    margin-right: 5px;
+}
+
+.item-total-price {
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-align: right;
+    min-width: 80px; /* Ensures price column aligns */
+}
+
+
+/* --- Order Summary Panel --- */
+.order-summary-panel {
+    background-color: var(--light-color);
+    padding: 30px;
+    border-radius: 8px;
+    height: fit-content;
+    box-shadow: var(--shadow-subtle);
+    position: sticky; /* Sticky Summary Panel */
+    top: 100px;
+}
+
+.order-summary-panel h2 {
+    border-bottom: 2px solid var(--color-brown);
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    color: var(--color-dark-text);
+    text-align: left;
+}
+.order-summary-panel h2::after {
+    display: none;
+}
+
+.summary-details {
+    margin-top: 20px;
+    padding-top: 15px;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 1.1rem;
+    color: var(--color-dark-text);
+}
+
+.summary-line.total {
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-top: 2px solid var(--color-brown);
+    margin-top: 15px;
+    padding-top: 20px;
+}
+
+.policy-info {
+    font-size: 0.9rem;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+/* 🟢 NEW: Payment Method Grouping Styles (Using correct HTML classes) 🟢 */
+.payment-options { /* Renamed from .payment-methods-group */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Spacing between payment option tiles */
+}
+
+/* Individual Payment Option Tile */
+.payment-option-tile { /* Renamed from .payment-option-card */
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: var(--white-color);
+    box-shadow: var(--shadow-subtle);
+}
+
+.payment-option-tile:hover {
+    border-color: var(--color-brown);
+}
+
+/* Visual elements within the tile */
+.payment-option-tile input[type="radio"] {
+    /* Hide the default radio button */
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.payment-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    width: 100%;
+    margin-left: 20px; /* Space for the custom radio button look */
+}
+
+.payment-info .method-name {
+    font-weight: 500;
+    margin-right: 10px;
+}
+.payment-info .method-icons i {
+    font-size: 1.5rem;
+    color: var(--color-brown);
+    margin-left: 5px;
+}
+
+
+/* Custom radio button look */
+.payment-option-tile {
+    position: relative; /* Needed to position the custom radio button */
+}
+.payment-option-tile::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-dark-text);
+    border-radius: 50%;
+    background-color: var(--white-color);
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    /* Position the custom radio button */
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* The main fix is styling the ::before on the tile when the input is checked. */
+/* We will rely on JavaScript to add an 'active' class to the tile on click, as 
+   the CSS structure makes the direct sibling selection unreliable here. */
+.payment-option-tile.active::before {
+    background-color: var(--color-brown);
+    box-shadow: inset 0 0 0 4px var(--white-color);
+    border-color: var(--color-brown);
+}
+.payment-option-tile.active {
+    border-color: var(--color-brown);
+    box-shadow: 0 0 0 2px rgba(178, 143, 103, 0.4);
+}
+.payment-option-tile.active .method-name {
+    font-weight: 700;
+    color: var(--color-dark-text);
+}
+
+
+/* Credit Card Fields Container */
+#credit-card-fields {
+    padding: 20px;
+    border: 1px dashed var(--color-light-pink);
+    border-radius: 8px;
+    margin-top: 15px;
+    background-color: var(--light-color);
+    display: none; 
+}
+#credit-card-fields.active {
+    display: block; /* JS adds 'active' class to show it */
+}
+
+.field-title {
+    font-size: 1.2rem;
+    color: var(--color-dark-text);
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: 10px;
+}
+
+/* Special icons/text for other methods (e.g., logos) */
+.payment-logo {
+    font-weight: 700;
+    font-style: italic;
+    color: var(--color-dark-text);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+}
+
+/* =======================================================
+    6. Media Queries for Responsive Design 
+    ======================================================= */
+
+/* General Mobile Styles */
+@media (max-width: 800px) {
+    /* --- HEADER FIXES (Re-affirming mobile layout) --- */
+    .top-bar {
+        padding: 10px 4%;
+    }
+    .logo img {
+        height: 60px;
+        margin-right: 5px;
+        flex-shrink: 0;
+    }
+    .logo-text {
+        font-size: 1.1rem;
+        margin-bottom: 0;
+        white-space: normal;
+        line-height: 1.1; 
+    }
+    .account {
+        gap: 10px;
+    }
+    /* Show the menu button */
+    .menu-button {
+        display: flex; /* Show only the menu button */
+    }
+    /* Hide the text links */
+    .account a:not(.icon-link):not(.menu-button) { 
+        display: none !important;
+    }
+    .search-wrapper { 
+        order: 3; 
+        width: 100%;
+        margin-top: 10px;
+        padding: 0 4%;
+        display: block;
+    }
+    .hideOnMobile {
+        display: none !important;
+    }
+
+    section {
+        padding: 50px 4%; 
+    }
+    
+    /* --- HERO Mobile --- */
+    .hero-promo-grid {
+        display: block; 
+        min-height: 400px;
+        padding: 0;
+        padding-bottom: 20px;
+    }
+    .promo-panel-left,
+    .promo-panel-right {
+        display: none; 
+    }
+    .hero-central-content {
+        max-height: 400px;
+        height: auto; 
+        border-radius: 0; /* Let it stretch full width on mobile */
+    }
+    .carousel-container-overlay {
+        height: 300px;
+        border-radius: 0;
+    }
+    .hero-text-container {
+        border-radius: 0;
+    }
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* --- CHECKOUT Mobile --- */
+    .checkout-layout {
+        grid-template-columns: 1fr; /* Stack form and summary */
+        gap: 30px;
+    }
+    .checkout-container {
+        margin: 20px 0;
+        padding: 0 4%; 
+    }
+
+    /* Reset sticky on mobile */
+    .order-summary-panel {
+        position: relative;
+        top: 0;
+    }
+    .checkout-form .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    /* Cart Item Mobile Layout */
+    .cart-item {
+        /* Stack controls on a new line on small screens */
+        grid-template-columns: 80px 1fr;
+        grid-template-rows: auto auto;
+    }
+    .item-total-price {
+        /* Align total price on the same row as details */
+        grid-column: 2;
+        grid-row: 1;
+        align-self: flex-start;
+        font-size: 1.1rem;
+    }
+    .cart-item-details {
+        grid-column: 2;
+        grid-row: 1;
+        text-align: right;
+    }
+    .cart-item-details .item-name {
+        font-size: 1.1rem;
+    }
+    .cart-item-details .item-price {
+        display: none; /* Hide individual price/qty to prevent clutter */
+    }
+    /* We need to re-align the quantity input and remove button */
+    .item-controls {
+        grid-column: 1 / 3;
+        grid-row: 2;
+        margin-top: 5px;
+        padding-top: 5px;
+        border-top: 1px dotted rgba(0, 0, 0, 0.1);
+        justify-content: space-between; /* Space out controls */
+        padding-right: 10px;
+    }
+    .item-name {
+        margin-right: 0;
+        text-align: left;
+    }
+    .cart-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .cart-actions .cta-button {
+        width: 100%;
+    }
+}

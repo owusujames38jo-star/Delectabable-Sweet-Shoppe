@@ -1,0 +1,212 @@
+/* =======================================================
+    About Page Specific Styles
+    ======================================================= */
+/* NOTE: Variables are inherited from styles.css */
+
+/* --- 1. About Page Hero Section --- */
+.hero-section {
+    background-image: url('/images/about-hero.jpg'); /* IMPORTANT: Ensure this path is correct */
+    background-size: cover;
+    background-position: center;
+    padding: 180px 20px; /* FINISHING TOUCH: Increased padding for visual impact */
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Ensures overlay stays within bounds */
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.55); /* FINISHING TOUCH: Slightly darker overlay for contrast */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    color: var(--white-color);
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* FINISHING TOUCH: Stronger shadow */
+}
+
+.hero-content .subtitle {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: var(--light-color);
+    font-style: italic;
+    font-weight: 300; /* FINISHING TOUCH: Thinner font weight for contrast */
+}
+
+/* --- 2. Our Story Section --- */
+.about-story-section {
+    /* FINISHING TOUCH: Swapped background to white for contrast against the hero */
+    background-color: var(--white-color); 
+    padding: 80px 5%;
+}
+
+.story-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 60px; /* FINISHING TOUCH: Increased gap for better spacing */
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.story-image,
+.story-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.story-image {
+    /* FINISHING TOUCH: Add a slight rotation for style */
+    transform: rotate(-1deg); 
+}
+
+.story-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* FINISHING TOUCH: Stronger shadow */
+    transition: transform 0.3s ease;
+}
+
+.story-image img:hover {
+    transform: scale(1.02) rotate(0deg); /* FINISHING TOUCH: Image straightens and lifts on hover */
+}
+
+.story-text h2 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.story-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color); /* FINISHING TOUCH: Used text-color variable for consistency */
+}
+
+/* --- 3. Guiding Principles Section --- */
+.mission-vision-section {
+    /* FINISHING TOUCH: Used light-color background */
+    background-color: var(--light-color); 
+    padding: 80px 5%;
+    text-align: center;
+}
+
+.principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.principle-card {
+    background: var(--white-color); /* FINISHING TOUCH: White cards on light background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 3px solid var(--accent-color); /* FINISHING TOUCH: Accent colored border */
+}
+
+.principle-card:hover {
+    transform: translateY(-5px); /* FINISHING TOUCH: Reduced lift effect */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.principle-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+/* --- 4. Team Section --- */
+.team-section {
+    /* FINISHING TOUCH: Back to white background */
+    background-color: var(--white-color);
+    padding: 80px 5%;
+    text-align: center;
+}
+
+.team-members-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.team-member-card {
+    background: var(--white-color);
+    border-radius: 10px;
+    /* FINISHING TOUCH: Stronger shadow for team cards */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); 
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    width: 100%;
+    max-width: 280px;
+    padding-bottom: 20px;
+}
+
+.team-member-card:hover {
+    transform: scale(1.02); /* FINISHING TOUCH: Subtle scaling effect */
+}
+
+.team-member-card img {
+    /* FINISHING TOUCH: Consistent square image container for team members */
+    width: 100%; 
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 10px;
+    /* FINISHING TOUCH: Use rounded corners instead of full circle for professional look */
+    border-radius: 10px 10px 0 0; 
+}
+
+.team-member-card h3 {
+    margin: 15px 0 5px;
+    font-size: 1.4rem;
+    color: var(--primary-color);
+}
+
+.team-member-card p {
+    font-style: normal; /* FINISHING TOUCH: Removed italics for title */
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+/* =======================================================
+    5. Responsive Styles
+    ======================================================= */
+@media (max-width: 768px) {
+    .story-grid {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .story-text,
+    .story-image {
+        min-width: 100%; /* Allows full width on mobile */
+    }
+
+    /* FINISHING TOUCH: Swap order for better mobile reading flow (Text then Image) */
+    .story-image {
+        order: 1; 
+    }
+    .story-text {
+        order: 2;
+    }
+}

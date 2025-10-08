@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divine Delights | Checkout</title>
+    
+    <link rel="stylesheet" href="./styles/styles.css">
+    
+    <link rel="manifest" href="./manifest.json">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="top-bar">
+            <div class="logo">
+                <img src="./images/logo.png" alt="Divine Delights Logo">
+                <span class="logo-text">Delectable Sweet Shoppe</span>
+            </div>
+            
+            <div class="search-wrapper">
+                <div class="search">
+                    <input type="text" placeholder="Search our cakes...">
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </div>
+
+            <div class="account">
+                <a href="checkout.html" class="cart-link icon-link" aria-label="Shopping Cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26">
+                        <path fill="currentColor" d="M280 876q-33 0-56.5-23.5T200 796q0-33 23.5-56.5T280 716q33 0 56.5 23.5T360 796q0 33-23.5 56.5T280 876Zm400 0q-33 0-56.5-23.5T600 796q0-33 23.5-56.5T680 716q33 0 56.5 23.5T760 796q0 33-23.5 56.5T680 876ZM40 176v-60h136l138 290h382l123-230H880q-17 0-28.5-11.5T840 244q0-13 8.5-22t21.5-9h64v-60H800q-13 0-22 8.5t-9 21.5q0 17 11.5 28.5T800 244l-66 125L594 656H380l-63-125H160L40 176Z"/>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </a>
+                
+                <a href="#" class="menu-button" onclick="showSidebar()" aria-label="Open menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26">
+                        <path fill="currentColor" d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <nav class="hideOnMobile">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#products">Products</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar" id="sidebar">
+            <a onclick="hideSidebar()" class="close-button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24">
+                    <path fill="currentColor" d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
+                </svg>
+            </a>
+            <a href="index.html">Home</a>
+            <a href="index.html#products">Products</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+        </div>
+    </header>
+
+    <main class="checkout-container">
+        <h1>Checkout</h1>
+
+        <div class="checkout-layout"> 
+            
+            <section class="checkout-form">
+                <h2>Shipping & Payment</h2>
+                <form id="shipping-form">
+                    
+                    <fieldset>
+                        <legend>Contact Information</legend>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Shipping Address</legend>
+                        <div class="form-group">
+                            <label for="address">Street Address</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="zip">Zip/Postal Code</label>
+                                <input type="text" id="zip" name="zip" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <select id="country" name="country" required>
+                                <option value="" disabled selected>Select Country</option>
+                                <option value="USA">United States</option>
+                                <option value="CAN">Canada</option>
+                                </select>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Payment Method</legend>
+                        
+                        <div class="payment-options" id="payment-options">
+                            
+                            <label class="payment-option-tile active" data-method="card">
+                                <input type="radio" name="payment-method" data-method="card" value="card" checked>
+                                <div class="payment-info">
+                                    <span class="method-name">Credit/Debit Card</span>
+                                    <div class="method-icons">
+                                        <i class="fa-brands fa-cc-visa"></i>
+                                        <i class="fa-brands fa-cc-mastercard"></i>
+                                        <i class="fa-brands fa-cc-amex"></i>
+                                        <i class="fa-brands fa-cc-discover"></i>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="payment-option-tile" data-method="paypal">
+                                <input type="radio" name="payment-method" data-method="paypal" value="paypal">
+                                <div class="payment-info">
+                                    <span class="method-name">PayPal</span>
+                                    <i class="fa-brands fa-cc-paypal"></i>
+                                </div>
+                            </label>
+                            
+                            <label class="payment-option-tile" data-method="applepay">
+                                <input type="radio" name="payment-method" data-method="applepay" value="applepay">
+                                <div class="payment-info">
+                                    <span class="method-name">Apple Pay / Digital Wallet</span>
+                                    <div class="method-icons">
+                                        <i class="fa-brands fa-cc-apple-pay"></i>
+                                        <i class="fa-solid fa-wallet" title="Includes Venmo, CashApp, Zelle, Chime"></i> 
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div id="credit-card-fields" class="payment-fields active">
+                            <h3 class="field-title">Card Details</h3>
+                            <div class="form-group">
+                                <label for="card-number">Card Number</label>
+                                <input type="text" id="card-number" name="card-number" placeholder="XXXX XXXX XXXX XXXX" class="cc-required" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="expiry">Expiry (MM/YY)</label>
+                                    <input type="text" id="expiry" name="expiry" placeholder="MM/YY" class="cc-required" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" name="cvv" placeholder="XXX" class="cc-required" required>
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    <button type="button" id="checkout-btn" class="cta-button full-width">
+                        Place Order
+                    </button>
+
+                </form>
+            </section>
+
+
+            <section class="order-summary-panel">
+                <h2>Review Your Items</h2>
+
+                <div id="cart-items-container">
+                    <div class="empty-cart-message">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                        <p>Your cart is currently empty. Please add items from the <a href="index.html">Home page</a>.</p>
+                    </div>
+                </div>
+                
+                <div class="summary-details">
+                    <div class="summary-line">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-line">
+                        <span>Shipping:</span>
+                        <span id="shipping-cost">$5.00</span>
+                    </div>
+                    <div class="summary-line total">
+                        <strong>Total:</strong>
+                        <strong id="total-cost">$5.00</strong>
+                    </div>
+
+                    <div class="cart-actions">
+                        <a href="index.html" class="cta-button secondary-cta">Continue Shopping</a>
+
+                        <button type="button" id="clear-cart-btn" class="cta-button danger-cta">
+                            <i class="fa-solid fa-trash-can"></i> Clear Cart
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="policy-info">
+                    <p>By placing this order, you agree to the Divine Delights <a href="#">Terms and Conditions</a>.</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Divine Delights. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showSidebar() {
+            document.getElementById('sidebar').classList.add('show');
+        }
+        function hideSidebar() {
+            document.getElementById('sidebar').classList.remove('show');
+        }
+    </script>
+    
+    <script src="./scripts/cart.js"></script> 
+
+</body>
+</html>
