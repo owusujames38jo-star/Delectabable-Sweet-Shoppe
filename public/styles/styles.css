@@ -11,11 +11,11 @@
     /* Color Palette: Bakery-themed warm tones */
     --color-dark-text: #4B3B2B;        /* Dark Brown - Headers, High Contrast */
     --color-brown: #B28F67;             /* Medium Brown/Tan - Links, Primary CTA */
-    --light-color: #F8F4F0;             /* Light Tan/Off-white - Backgrounds */
+    --light-color: #F8F4F0;              /* Light Tan/Off-white - Backgrounds */
     --primary-color: #1f1f1f;           /* Deep Black/Text for maximum readability */
     --white-color: #fff;              /* Pure White */
     --color-light-pink: #ffb6c1;       /* Soft Pink - Call to Action, Navigation Bar */
-    --color-danger: #A42B30;           /* Red/Maroon for remove/alert actions */
+    --color-danger: #A42B30;          /* Red/Maroon for remove/alert actions */
     --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.1); 
     --shadow-medium: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
@@ -436,8 +436,8 @@ h2::after {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Update path if image is missing, assuming it should be a general bakery scene */
-    background-image: url('../images/hero-background.jpg'); 
+    /* 🔴 FIXED: Changed relative path to absolute root path */
+    background-image: url('/images/hero-background.jpg'); 
     background-size: cover;
     background-position: center;
     filter: brightness(0.8) contrast(1.1); 
@@ -1016,7 +1016,7 @@ footer h3 {
 
 /* The main fix is styling the ::before on the tile when the input is checked. */
 /* We will rely on JavaScript to add an 'active' class to the tile on click, as 
-   the CSS structure makes the direct sibling selection unreliable here. */
+    the CSS structure makes the direct sibling selection unreliable here. */
 .payment-option-tile.active::before {
     background-color: var(--color-brown);
     box-shadow: inset 0 0 0 4px var(--white-color);
