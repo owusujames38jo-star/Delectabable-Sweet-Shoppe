@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand: #ee5a98;
+  color-scheme: light;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  @apply bg-white text-zinc-900 antialiased;
+}
+
+::selection {
+  background: rgba(238, 90, 152, 0.22);
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-500/20 disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-primary {
+    @apply btn bg-brand-500 text-white hover:bg-brand-600;
+  }
+  .btn-secondary {
+    @apply btn bg-zinc-900 text-white hover:bg-zinc-800;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent text-zinc-900 hover:bg-zinc-100;
+  }
+  .card {
+    @apply rounded-2xl border border-zinc-200 bg-white shadow-sm;
+  }
+  .input {
+    @apply w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-brand-500 focus:shadow-glow;
+  }
+  .label {
+    @apply text-sm font-medium text-zinc-800;
+  }
+  .muted {
+    @apply text-sm text-zinc-600;
+  }
+}
